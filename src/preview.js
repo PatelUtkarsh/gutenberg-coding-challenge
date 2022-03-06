@@ -20,6 +20,15 @@ import continents from '../assets/continents.json';
 import { getEmojiFlag } from './utils';
 import { ALLOWED_EXCERPT_TAGS, ALLOWED_TITLE_TAGS } from './const';
 
+/**
+ * Preview.
+ *
+ * @param {Object} props              Props.
+ * @param {string} props.countryCode  Selected country code.
+ * @param {Array}  props.relatedPosts Related posts array.
+ *
+ * @return {JSX.Element|null} Preview JXS element.
+ */
 export default function Preview( { countryCode, relatedPosts } ) {
 	if ( ! countryCode ) return null;
 

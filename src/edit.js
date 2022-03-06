@@ -21,8 +21,21 @@ import { getEmojiFlag } from './utils';
 import Preview from './preview';
 import useRelatedPosts from './useRelatedPosts';
 
-export default function Edit( { attributes, setAttributes } ) {
-	const { countryCode, relatedPosts } = attributes;
+/**
+ * Block edit.
+ *
+ * @param {Object}   props                         Props.
+ * @param {Object}   props.attributes              Attributes.
+ * @param {Function} props.setAttributes           Set attributes.
+ * @param {string}   props.attributes.countryCode  Country Code.
+ * @param {Array}    props.attributes.relatedPosts Related posts array.
+ *
+ * @return {JSX.Element} JXS element.
+ */
+export default function Edit( {
+	attributes: { countryCode, relatedPosts },
+	setAttributes,
+} ) {
 	const options = Object.keys( countries ).map( ( code ) => ( {
 		value: code,
 		label: getEmojiFlag( code ) + '  ' + countries[ code ] + ' — ' + code,

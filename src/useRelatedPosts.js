@@ -7,6 +7,13 @@ import { useSelect } from '@wordpress/data';
  */
 import countries from '../assets/countries.json';
 
+/**
+ * Get related posts.
+ *
+ * @param {string} countryCode Country code.
+ *
+ * @return {Object} Related posts.
+ */
 const useRelatedPosts = ( countryCode ) => {
 	return useSelect( ( select ) => {
 		return {
