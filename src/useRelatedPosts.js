@@ -30,7 +30,7 @@ const useRelatedPosts = ( countryCode ) => {
 						excerpt: relatedPost.excerpt?.rendered || '',
 					} ) ) || [],
 		};
-	} );
+	} ).relatedPosts;
 };
 
 export default useRelatedPosts;

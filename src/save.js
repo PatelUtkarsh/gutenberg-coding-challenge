@@ -4,7 +4,6 @@
 /**
  * WordPress dependencies
  */
-import classnames from 'classnames';
 import { useBlockProps } from '@wordpress/block-editor';
 /**
  * Internal dependencies
@@ -20,10 +19,8 @@ import Preview from './preview';
  * @return {JSX.Element} Save element.
  */
 export default function Save( { attributes } ) {
-	const props = useBlockProps.save();
-	props.className = classnames( props.className, 'xwp-country-card' );
 	return (
-		<div>
+		<div { ...useBlockProps.save() }>
 			<Preview { ...attributes } />
 		</div>
 	);

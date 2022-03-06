@@ -1,4 +1,11 @@
 /**
+ * External depedencies
+ */
+/**
+ * External dependencies
+ */
+import isEqual from 'lodash.isequal';
+/**
  * WordPress dependencies
  */
 import { edit, globe } from '@wordpress/icons';
@@ -41,9 +48,7 @@ export default function Edit( {
 		label: getEmojiFlag( code ) + '  ' + countries[ code ] + ' — ' + code,
 	} ) );
 
-	const [ isPreview, setPreview ] = useState();
-
-	useEffect( () => setPreview( countryCode ), [ countryCode ] );
+	const [ isPreview, setPreview ] = useState( Boolean( countryCode ) );
 
 	const handleChangeCountryCode = ( newCountryCode ) => {
 		if ( newCountryCode && countryCode !== newCountryCode ) {
@@ -52,15 +57,19 @@ export default function Edit( {
 				relatedPosts: [],
 			} );
 		}
+		setPreview( ! isPreview );
 	};
 
 	const relatedPostsSelect = useRelatedPosts( countryCode );
 
 	useEffect( () => {
+		if ( isEqual( relatedPosts, relatedPostsSelect ) ) {
+			return;
+		}
 		setAttributes( {
-			relatedPosts: relatedPostsSelect?.relatedPosts,
+			relatedPosts: relatedPostsSelect,
 		} );
-	}, [ relatedPostsSelect, setAttributes ] );
+	}, [ relatedPosts, relatedPostsSelect, setAttributes ] );
 
 	return (
 		<>
