@@ -37,21 +37,23 @@ export default function Preview( { countryCode, relatedPosts } ) {
 
 	return (
 		<section className="xwp-country-card">
-			<div
-				className="xwp-country-card__media"
-				data-emoji-flag={ emojiFlag }
-			>
-				<figure className="xwp-country-card-flag">{ emojiFlag }</figure>
-			</div>
-			<h3 className="xwp-country-card__heading">
-				{ __( 'Hello from', 'xwp-country-card' ) }{ ' ' }
-				<strong>{ countries[ countryCode ] }</strong> (
-				<span className="xwp-country-card__country-code">
-					{ countryCode }
-				</span>
-				), { continentNames[ continents[ countryCode ] ] }!
-			</h3>
-			<div className="xwp-country-card__related-posts">
+			<header>
+				<figure
+					className="xwp-country-card__media"
+					data-emoji-flag={ emojiFlag }
+				>
+					<div className="xwp-country-card-flag">{ emojiFlag }</div>
+				</figure>
+				<h3 className="xwp-country-card__heading">
+					{ __( 'Hello from', 'xwp-country-card' ) }{ ' ' }
+					<strong>{ countries[ countryCode ] }</strong> (
+					<span className="xwp-country-card__country-code">
+						{ countryCode }
+					</span>
+					), { continentNames[ continents[ countryCode ] ] }!
+				</h3>
+			</header>
+			<footer className="xwp-country-card__related-posts">
 				<h4 className="xwp-country-card__related-posts__heading">
 					{ hasRelatedPosts
 						? sprintf(
@@ -84,15 +86,15 @@ export default function Preview( { countryCode, relatedPosts } ) {
 						{ relatedPosts.map( ( relatedPost ) => (
 							<li
 								key={ `xwp-country-card__related-posts-${ relatedPost.id }` }
-								className="related-post"
+								className="xwp-country-card__related-posts-list__item"
 							>
 								<a
-									className="link"
+									className="xwp-country-card__related-posts-list__link"
 									href={ relatedPost.link }
 									data-post-id={ relatedPost.id }
 								>
 									<h3
-										className="title"
+										className="xwp-country-card__related-posts-list__title"
 										dangerouslySetInnerHTML={ {
 											__html: sanitizeHtml(
 												relatedPost.title,
@@ -101,7 +103,7 @@ export default function Preview( { countryCode, relatedPosts } ) {
 										} }
 									/>
 									<summary
-										className="excerpt"
+										className="xwp-country-card__related-posts-list__excerpt"
 										dangerouslySetInnerHTML={ {
 											__html: sanitizeHtml(
 												relatedPost.excerpt,
@@ -114,7 +116,7 @@ export default function Preview( { countryCode, relatedPosts } ) {
 						) ) }
 					</ul>
 				) }
-			</div>
+			</footer>
 		</section>
 	);
 }

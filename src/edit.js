@@ -1,7 +1,4 @@
 /**
- * External depedencies
- */
-/**
  * External dependencies
  */
 import isEqual from 'lodash.isequal';
